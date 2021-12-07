@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.demo
+{
+    background-color: rebeccapurple;
+}
+div.blog_post
+{
+    background-color: white;
+}
+.imgbtn
+{
+    margin-bottom: 10px;
+
+}
+.auto-top
+{
+    margin-top: 5px;
+}
+.success_message
+{
+    background-color: rgba(21, 224, 180, 0.411);
+    color:rgb(24, 66, 182);
+    margin-top:10px;
+    margin-right: 50%;
+    display: none;
+    font-size: 20px;
+    padding: 10px;
+    height: 40px;
+    font-weight: 20px;
+}
+.error_message
+{
+    background-color: rgb(161, 124, 67);
+    color:#f71313fb;
+    border:1px solid rgb(14, 10, 9);
+    margin-top:10px;
+    display: none;
+    font-size: 20px;
+    padding: 10px;;
+    height: 40px;
+    text-align: center;
+}
+.error
+{
+    color:red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 10px;
+}
+.loader
+{
+    position:fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    display: none;
+}
+.highlight_cls
+{
+    border: 1px red solid;
+    background-image: url(../images/red_highlight.gif);
+    background-repeat:no-repeat;
+    background-size: 35px 35px;
+    background-position-x: right;
+    /* background:url('/image/background.svg') no-repeat 10px 5px;
+    background-size: 1.4em; */
+}
+.unhighlight_cls
+{
+    border: 1px green solid;
+    background-image: url(../images/green_highlight.gif);
+    background-repeat:no-repeat;
+    background-size: 35px 35px;
+    
+    background-position-x: right;
+}
+#hide{
+    position: absolute;
+    display:none;
+    right: 9px;
+    top: 12px;
+}
+#show{
+    position: absolute;
+    display:none;
+    right: 9px;
+    top: 12px;
+}
+#username
+{
+    border-radius: 20px;
+}
+#password
+{
+    border-radius: 20px;
+}

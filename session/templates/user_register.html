@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}User{% endblock title %}
+
+{% block content %}
+
+<div id="search-bar mt-4">
+<label>Search:</label>
+<input type="text" id="search_name" autocomplete="off" placeholder="Search Your Name">
+</div>
+
+<table class="table mt-4 table-bordered" id='fulltbl' style='display: none; width:100%;' >
+<tr class="success table-dark">
+    <th>Name</th>
+</tr>
+<tbody id="disp_livedata">
+
+</tbody>
+</table>
+
+<center><img src="{{url_for('static',filename='images/user_register.png')}}" height="150px" width="200px" class="mt-4"></center>
+<h1 class="text-center">User Registration Page</h1>
+
+     {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class=flashes>
+                        {% for category,message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                <strong>Message:</strong> {{ message}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </ul>
+          {% endif %}
+        {% endwith %}
+
+<div class="alert alert-primary" role="alert" style="display:none" id='responsrtn'>Inserted Successfully</div>
+  
+    <form method="POST" class="mt-2" id="registerfrm">
+                  <div class="mb-3">
+                      <label for="exampleInputUsername" class="form-label">Username</label>
+                      <input type="text" name="username" class="form-control" id="unm">
+                      <div id="emailHelp" class="form-text">We'll never share your Username with anyone else.</div>       
+                  </div>   
+            <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" name="email" class="form-control" id="email" required>
+            
+              </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" id="pass" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Conform Password</label>
+              <input type="password" name="con_password" class="form-control" id="cpass" required>
+            </div>
+          <!--- <button type="button" class="btn btn-primary btn-lg" id="upload">Submit</button> -->
+          <input type="submit" value="submit" class="btn btn-info btn-lg"> 
+</form>
+    
+   
+<div class="loader">  
+    <img src="{{url_for('static',filename='images/VAyR.gif')}}" style="width:200px;height:200px;">
+</div>
+<p id="dis"></p>
+<div>
+
+<form method="POST" id="del_frm">
+<table class="table table-responsive table-bordered">
+<thead>
+    <tr class="thead-dark">
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody id="tablebody">
+        {% for i in database_data %}
+        <tr id="del_check{{i.id}}"> <td>{{i.username}}</td> <td>{{i.email}}</td>  <td>{{i.password_hash}}</td><td><input type="checkbox" name="mycheckbox[]" value="{{i.id}}" id="xy-{{i.id}}"></td> </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<div align="center">
+    <!-- <input type="submit" value="Delete All Selected" class="btn btn-primary" id="del_all_record"> -->
+
+    <button type="button" class="btn btn-primary" id="del_btn">Delete All Records</button>
+
+</div>
+</form>
+
+<div>
+<table id="empTable" class="display dataTable" width="100%">
+        <thead>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <!-- <tr>
+            <td>kishore</td>
+            <td>kishor@gmail.com</td>
+            <td>Kishor@123</td>
+    </tr>
+     <tr>
+            <td>kishore</td>
+            <td>kishor@gmail.com</td>
+            <td>Kishor@123</td>
+    </tr>
+     <tr>
+            <td>kishore</td>
+            <td>kishor@gmail.com</td>
+            <td>Kishor@123</td>
+    </tr>
+     <tr>
+            <td>kishore</td>
+            <td>kishor@gmail.com</td>
+            <td>Kishor@123</td>
+    </tr> -->
+    </tbody>
+</table>
+</div>
+
+{% endblock content %}
